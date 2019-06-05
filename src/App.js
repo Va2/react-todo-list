@@ -24,15 +24,22 @@ class App extends Component {
 			id: this.state.id,
 			title: this.state.item
 		}
-		console.log(newItem);
 		
-		const updatedItems = [...this.state.items, newItem]		
+		const updatedItems = [...this.state.items, newItem]
 
+		if (this.state.item.length > 0) {
+			this.setState({
+				items: updatedItems,
+				item: '',
+				id: uuid(),
+				editItem: false
+			})
+		}
+	}
+
+	clearList = () => {
 		this.setState({
-			items: updatedItems,
-			item: '',
-			id: uuid(),
-			editItem: false
+			items: []
 		})
 	}
 
@@ -47,7 +54,10 @@ class App extends Component {
 							handleChange={this.handleChange}
 							handleSubmit={this.handleSubmit}
 						/>
-						<TodoList items={this.state.items} />
+						<TodoList
+							items={this.state.items}
+							clearList={this.clearList}
+						/>
 					</div>
 				</div>
 			</div>
