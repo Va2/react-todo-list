@@ -4,11 +4,14 @@ import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
 
 class App extends Component {
-	state={
-		items: [],
-		id: uuid(),
-		item: '',
-		editItem: false
+	constructor(props) {
+		super(props)
+		this.state={
+			items: [],
+			id: uuid(),
+			item: '',
+			editItem: false
+		}
 	}
 
 	handleChange = event => {
@@ -72,8 +75,6 @@ class App extends Component {
 	}
 
 	handleDeleteDoneTasks = completed => {
-		console.log("Delete done tasks");
-
 		const filteredItems = this.state.items.filter(item => item.completed === false)
 
 		this.setState({
