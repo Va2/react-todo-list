@@ -9,7 +9,7 @@ export default class TodoInput extends Component {
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
                         <div className="input-group-prepend">
-                            <div className="input-group-text bg-primary text-white">
+                            <div className="input-group-text bg-info text-white">
                                 <i className="fas fa-book" />
                             </div>
                         </div>
@@ -25,7 +25,7 @@ export default class TodoInput extends Component {
 
                     <button 
                         type="submit"
-                        className={`btn btn-block mt-3 ${editItem ? 'btn-success' : 'btn-primary'}`}
+                        className={`btn btn-block mt-3 ${editItem ? 'btn-success' : 'btn-info'}`}
                     >
                         {editItem ? 'Edit task' : 'Add new task'}
                     </button>

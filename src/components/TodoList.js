@@ -11,6 +11,38 @@ export default class TodoList extends Component {
                     TodoList
                 </h3>
 
+                {items.length === 0 ? '' :
+                    <div className="row">
+                        <div className="col-md-4">
+                            <button 
+                                type="button"
+                                className="btn btn-info btn-block mt-1"
+                                // onClick={handleDeleteDoneTasks}
+                            >
+                                All
+                            </button>
+                        </div>
+                        <div className="col-md-4">
+                            <button 
+                                type="button"
+                                className="btn btn-info btn-block mt-1"
+                                // onClick={handleDeleteDoneTasks}
+                            >
+                                Done
+                            </button>
+                        </div>
+                        <div className="col-md-4">
+                            <button 
+                                type="button"
+                                className="btn btn-info btn-block mt-1"
+                                // onClick={handleDeleteDoneTasks}
+                            >
+                                Todo
+                            </button>
+                        </div>
+                    </div>
+                }
+
                 {
                     items.map(item => {
                         return (
@@ -27,21 +59,28 @@ export default class TodoList extends Component {
                     })
                 }
 
-                <button 
-                    type="button"
-                    className="btn btn-danger btn-block mt-5"
-                    onClick={handleDeleteDoneTasks}
-                >
-                    Delete done tasks
-                </button>
-
-                <button 
-                    type="button"
-                    className="btn btn-danger btn-block"
-                    onClick={clearList}
-                >
-                    Delete all tasks
-                </button>
+                {items.length === 0 ? '' :
+                    <div className="row mt-4">
+                        <div className="col-md-6">
+                            <button 
+                                type="button"
+                                className="btn btn-danger btn-block mt-1"
+                                onClick={handleDeleteDoneTasks}
+                            >
+                                Delete done tasks
+                            </button>
+                        </div>
+                        <div className="col-md-6">
+                            <button 
+                                type="button"
+                                className="btn btn-danger btn-block mt-1"
+                                onClick={clearList}
+                            >
+                                Delete all tasks
+                            </button>
+                        </div>
+                    </div>
+                }
             </ul>
         )
     }
