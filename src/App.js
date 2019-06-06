@@ -22,7 +22,8 @@ class App extends Component {
 		
 		const newItem = {
 			id: this.state.id,
-			title: this.state.item
+			title: this.state.item,
+			completed: false
 		}
 		
 		const updatedItems = [...this.state.items, newItem]
@@ -35,6 +36,17 @@ class App extends Component {
 				editItem: false
 			})
 		}
+	}
+
+	handleDoneTask = id => {
+		const filteredItems = this.state.items.map(item => {
+			item.id === id && (item.completed = !item.completed)
+			return item
+		})
+
+		this.setState({
+			items: filteredItems
+		})
 	}
 
 	handleDelete = id => {
@@ -75,13 +87,13 @@ class App extends Component {
 							item={this.state.item}
 							handleChange={this.handleChange}
 							handleSubmit={this.handleSubmit}
-							editItem={this.state.editItem}
 						/>
 						<TodoList
 							items={this.state.items}
 							clearList={this.clearList}
 							handleDelete={this.handleDelete}
 							handleEdit={this.handleEdit}
+							handleDoneTask={this.handleDoneTask}
 						/>
 					</div>
 				</div>

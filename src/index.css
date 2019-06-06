@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.completed-task {
+  text-decoration: line-through;
+  color: #db3545;
+}

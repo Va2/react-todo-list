@@ -3,7 +3,7 @@ import TodoItem from './TodoItem'
 
 export default class TodoList extends Component {
     render() {
-        const {items, clearList, handleDelete, handleEdit} = this.props
+        const {items, clearList, handleDelete, handleEdit, handleDoneTask} = this.props
 
         return (
             <ul className="list-group my-5">
@@ -16,9 +16,12 @@ export default class TodoList extends Component {
                         return (
                             <TodoItem
                                 key={item.id}
+                                id={item.id}
                                 title={item.title}
+                                completed={item.completed}
                                 handleDelete={() => handleDelete(item.id)}
                                 handleEdit={() => handleEdit(item.id)}
+                                handleDoneTask={handleDoneTask}
                             />
                         )
                     })
