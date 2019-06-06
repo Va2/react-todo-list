@@ -71,6 +71,16 @@ class App extends Component {
 		})
 	}
 
+	handleDeleteDoneTasks = completed => {
+		console.log("Delete done tasks");
+
+		const filteredItems = this.state.items.filter(item => item.completed === false)
+
+		this.setState({
+			items: filteredItems
+		})
+	}
+
 	clearList = () => {
 		this.setState({
 			items: []
@@ -94,6 +104,7 @@ class App extends Component {
 							handleDelete={this.handleDelete}
 							handleEdit={this.handleEdit}
 							handleDoneTask={this.handleDoneTask}
+							handleDeleteDoneTasks={this.handleDeleteDoneTasks}
 						/>
 					</div>
 				</div>

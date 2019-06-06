@@ -3,7 +3,7 @@ import TodoItem from './TodoItem'
 
 export default class TodoList extends Component {
     render() {
-        const {items, clearList, handleDelete, handleEdit, handleDoneTask} = this.props
+        const {items, clearList, handleDelete, handleEdit, handleDoneTask, handleDeleteDoneTasks} = this.props
 
         return (
             <ul className="list-group my-5">
@@ -30,9 +30,17 @@ export default class TodoList extends Component {
                 <button 
                     type="button"
                     className="btn btn-danger btn-block mt-5"
+                    onClick={handleDeleteDoneTasks}
+                >
+                    Delete done tasks
+                </button>
+
+                <button 
+                    type="button"
+                    className="btn btn-danger btn-block"
                     onClick={clearList}
                 >
-                    Clear list
+                    Delete all tasks
                 </button>
             </ul>
         )
