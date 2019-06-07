@@ -1,5 +1,5 @@
 # ReactJS Todo List project
-During our coding training at **MolenGeek** we had to reproduce this website theme (see image below) to earn our badges. We have used the following languages/tools for the realisation of this project: **HTML5, Sass, Bootstrap 4, JavaScript (ES6), NPM, Trello, Git & GitHub**.
+During the coding training at **MolenGeek** I made a Todo List to practice ReactJS.
 
 ![Alt](https://raw.githubusercontent.com/Va2/react-todo-list/master/screenshot.jpg)
 
