@@ -8,9 +8,10 @@ class App extends Component {
 		super(props)
 		this.state={
 			items: [],
+			itemsToShow: "all",
 			id: uuid(),
 			item: '',
-			editItem: false
+			editItem: false,
 		}
 	}
 
@@ -41,14 +42,20 @@ class App extends Component {
 		}
 	}
 
-	handleDoneTask = id => {
+	updateTodosToShow = string => {
+		this.setState({
+			itemsToShow: string
+		});
+	};
+
+	handleDoneTask = (id, completed) => {
 		const filteredItems = this.state.items.map(item => {
 			item.id === id && (item.completed = !item.completed)
 			return item
 		})
 
 		this.setState({
-			items: filteredItems
+			items: filteredItems,
 		})
 	}
 
@@ -64,7 +71,6 @@ class App extends Component {
 		const filteredItems = this.state.items.filter(item => item.id !== id)
 
 		const selectedItem = this.state.items.find(item => item.id === id)
-		console.log(selectedItem)
 
 		this.setState({
 			items: filteredItems,
@@ -74,7 +80,7 @@ class App extends Component {
 		})
 	}
 
-	handleDeleteDoneTasks = completed => {
+	handleDeleteDoneTasks = () => {
 		const filteredItems = this.state.items.filter(item => item.completed === false)
 
 		this.setState({
@@ -89,6 +95,16 @@ class App extends Component {
 	}
 
 	render() {
+		let items = []
+
+		if (this.state.itemsToShow === "all") {
+			items = this.state.items;
+		} else if (this.state.itemsToShow === "todo") {
+			items = this.state.items.filter(item => !item.completed);
+		} else if (this.state.itemsToShow === "done") {
+			items = this.state.items.filter(item => item.completed);			
+		}
+
 		return (
 			<div className="container">
 				<div className="row">
@@ -100,12 +116,14 @@ class App extends Component {
 							handleSubmit={this.handleSubmit}
 						/>
 						<TodoList
-							items={this.state.items}
+							items={items}
+							filterDoneTasks={this.filterDoneTasks}
 							clearList={this.clearList}
 							handleDelete={this.handleDelete}
 							handleEdit={this.handleEdit}
 							handleDoneTask={this.handleDoneTask}
 							handleDeleteDoneTasks={this.handleDeleteDoneTasks}
+							updateTodosToShow={this.updateTodosToShow}
 						/>
 					</div>
 				</div>
